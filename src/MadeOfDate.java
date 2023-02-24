@@ -1,2 +1,9 @@
-package PACKAGE_NAME;public interface MadeOfDate {
+import java.time.LocalDate;
+
+public interface MadeOfDate {
+
+
+   void bodyTypeIdentification();
+   void dateOfMade(LocalDate date);
+
 }
