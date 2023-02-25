@@ -8,11 +8,12 @@ public class Car implements MadeOfDate {
     private int price;
     private BodyType bodyType;
 
-    public Car(String mark, LocalDate madeOfDade, int price, BodyType bodyType) {
+    public Car(String mark, LocalDate madeOfDade, int price,BodyType bodyType) {
         this.mark = mark;
         this.madeOfDade = madeOfDade;
         this.price = price;
         this.bodyType = bodyType;
+
     }
 
     public String getMark() {
@@ -42,18 +43,28 @@ public class Car implements MadeOfDate {
     }
     @Override
     public void bodyTypeIdentification() {
-        switch (getBodyType()){
-            case SEDAN -> System.out.println("Легковая машина ");
-            case CROSSOVER -> System.out.println("Машина для городских и для горных езды ");
-            case HATCHBACK -> System.out.println("легковая машина ");
-            case UNIVERSAL -> System.out.println("легковая машина для ");
-            case OFROADVERHICLE -> System.out.println("Машина для бездорожья ");
+        if (bodyType.equals(BodyType.SEDAN)){
+            System.out.println("Легковой классындагы машина");
+        }else if (bodyType.equals(BodyType.CROSSOVER)){
+            System.out.println("Внедорожник классындагы машина");
+        } else if (bodyType.equals(BodyType.OFROADVERHICLE)) {
+            System.out.println("Внедорожник классындагы машина");
+        } else if (bodyType.equals(BodyType.UNIVERSAL)) {
+            System.out.println("Универсал классындагы машина");
+        } else if (bodyType.equals(BodyType.HATCHBACK)) {
+            System.out.println("Легковой классындагы машина");
+
         }
+
     }
+
 
     @Override
     public void dateOfMade(LocalDate date) {
-        System.out.println(Period.between(madeOfDade,LocalDate.now()).getYears());
+        Date date1 = new Date();
+        System.out.println("Азыркы жыл\n"+date1);
+        System.out.println("Год эксплуатации");
+        System.out.println(Period.between(madeOfDade,LocalDate.now()).getYears()+"-Жыл");
     }
 
     @Override
@@ -62,7 +73,6 @@ public class Car implements MadeOfDate {
                 "mark='" + mark + '\'' +
                 ", madeOfDade=" + madeOfDade +
                 ", price=" + price +
-                ", bodyType=" + bodyType +
                 '}';
     }
 }
